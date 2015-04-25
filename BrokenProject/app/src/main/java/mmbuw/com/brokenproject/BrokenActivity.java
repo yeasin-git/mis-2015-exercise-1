@@ -32,8 +32,6 @@ public class BrokenActivity extends Activity{
         auntEdit = (EditText)findViewById(R.id.edittext);
         btnSentRequest = (Button) findViewById(R.id.btnSentRequest);
 
-        auntEdit.setText("Hello From Germany");
-
     }
 
     @Override
@@ -60,7 +58,7 @@ public class BrokenActivity extends Activity{
 
         //auntEdit.setText("Hello Yeasin From Button Click");
 
-        Toast.makeText(this, "Bug Fixed", Toast.LENGTH_LONG).show();
+        printShort("Bug Fixed");
 
         //Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
 
@@ -71,8 +69,27 @@ public class BrokenActivity extends Activity{
 
         System.out.println("If this appears in your console, you fixed a bug.");
         Intent intent = new Intent(this,AnotherBrokenActivity.class);
-        String message = "This string will be passed to the new activity";
+        String message = auntEdit.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE,message);
         startActivity(intent);
 
+    }
+
+    public void printLong(String message){
+        Context context = getApplicationContext();
+        CharSequence text = message;
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void printShort(String message){
+        Context context = getApplicationContext();
+        CharSequence text = message;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }

@@ -7,20 +7,38 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
     tools:context="mmbuw.com.brokenproject.AnotherBrokenActivity">
-
-    <TextView
-        android:id="@+id/brokenTextView"
+	
+	<TextView
+        android:id="@+id/etTeamInfo"
+        android:hint=""
+		android:text="Muhammad Yeasin - 115315 \n Moitree Chowdhury - 115316"
         android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="If you see this, you maybe fixed a bug! Or two."
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_below="@+id/brokenTextView"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="\n This view doesn't do anything really."
+		
+	<TextView
+        android:id="@+id/txtEnteredUrl"
+        android:text="No Url"
+		android:layout_marginTop="50dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+		
+	<Button
+           android:layout_below="@+id/btnConnect"
+           android:layout_width="200dp"
+           android:layout_height="wrap_content"
+           android:layout_centerHorizontal="true"
+		   android:layout_marginTop="80dp"
+           android:text="Connect..."
+           android:onClick="fetchHTML"
+        />
+		
+		<TextView
+        android:id="@+id/etHttpResponse"
+        android:text="No Http Response Yet"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:layout_marginTop="270dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 

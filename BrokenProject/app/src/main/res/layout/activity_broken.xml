@@ -8,21 +8,30 @@
     android:paddingBottom="@dimen/activity_vertical_margin"
 
     tools:context=".BrokenActivity">
+		
+	<TextView
+        android:id="@+id/etTeamInfo"
+        android:hint=""
+		android:text="Muhammad Yeasin - 115315 \n Moitree Chowdhury - 115316"
+        android:layout_centerHorizontal="true"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/edittext"
-        android:hint="Why is this thing so broken?"
+        android:hint="Name of Website"
+		android:layout_marginTop="100dp"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content" />
 
        <Button
            android:layout_below="@+id/btnSentRequest"
-           android:layout_width="wrap_content"
+           android:layout_width="200dp"
            android:layout_height="wrap_content"
            android:layout_centerHorizontal="true"
-	   android:layout_marginTop="50dp"
-           android:text="My darling, please don't cry!"
+		   android:layout_marginTop="150dp"
+           android:text="Go Another Page"
            android:onClick="brokenFunction"
         />
 

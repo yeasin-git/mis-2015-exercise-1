@@ -1,12 +1,19 @@
+// Muhammad Yeasin --- Matrikelnr : 115315
+// Moitree Chowdhury --- Matrikelnr : 115316
+
 package mmbuw.com.brokenproject;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
@@ -23,22 +30,30 @@ import mmbuw.com.brokenproject.R;
 
 public class AnotherBrokenActivity extends Activity {
 
+    private TextView txtEnteredUrl;
+    private TextView txtHttpResponse;
+    public String URL = "http://";
+
+    ProgressDialog pd;
+    String response;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_another_broken);
-    /*
-        Context context = getApplicationContext();
-        CharSequence text = "Project From Weimar";
-        int duration = Toast.LENGTH_LONG;
 
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-*/
+        txtEnteredUrl = (TextView) findViewById(R.id.txtEnteredUrl);
+        txtHttpResponse = (TextView) findViewById(R.id.etHttpResponse);
+
         Intent intent = getIntent();
         String message = intent.getStringExtra(BrokenActivity.EXTRA_MESSAGE);
         //What happens here? What is this? It feels like this is wrong.
         //Maybe the weird programmer who wrote this forgot to do something?
+
+        URL = URL + message + ".com";
+
+        txtEnteredUrl.setText("" + URL);
+
 
     }
 
@@ -62,7 +77,44 @@ public class AnotherBrokenActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    class RequestThread extends Thread{
+        public void run(){
+            response = HTTPUtil.retrieve(URL.toString());
+
+            if(response != null){
+                handler.sendEmptyMessage(0);
+            }
+            else{
+                handler.sendEmptyMessage(-1);
+            }
+        }
+    }
+
+    Handler handler = new Handler(){
+
+        public void handleMessage(android.os.Message msg){
+            if(msg.what >= 0){
+                txtHttpResponse.setText(response);
+            }
+            else{
+                txtHttpResponse.setText("Error Occured");
+            }
+            pd.dismiss();
+        }
+    };
+
     public void fetchHTML(View view) throws IOException {
+
+        printShort(URL);
+
+        pd = ProgressDialog.show(AnotherBrokenActivity.this,"We are connecting","Loading...");
+
+        RequestThread rThread = new RequestThread();
+        rThread.start();
+
+        //printLong(response);
+
+       // txtHttpResponse.setText("Connected");
 
         //According to the exercise, you will need to add a button and an EditText first.
         //Then, use this function to call your http requests
@@ -92,5 +144,23 @@ public class AnotherBrokenActivity extends Activity {
           End of helper code!
 
                   */
+    }
+
+    public void printLong(String message){
+        Context context = getApplicationContext();
+        CharSequence text = message;
+        int duration = Toast.LENGTH_LONG;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+    }
+
+    public void printShort(String message){
+        Context context = getApplicationContext();
+        CharSequence text = message;
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
     }
 }
