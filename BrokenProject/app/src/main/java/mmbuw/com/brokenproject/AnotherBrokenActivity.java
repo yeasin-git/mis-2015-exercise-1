@@ -1,5 +1,6 @@
 // Muhammad Yeasin --- Matrikelnr : 115315
 // Moitree Chowdhury --- Matrikelnr : 115316
+// MIS Exercise 1
 
 package mmbuw.com.brokenproject;
 
@@ -53,7 +54,6 @@ public class AnotherBrokenActivity extends Activity {
         URL = URL + message + ".com";
 
         txtEnteredUrl.setText("" + URL);
-
 
     }
 
