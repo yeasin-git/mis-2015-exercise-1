@@ -1,3 +1,6 @@
+// Muhammad Yeasin --- Matrikelnr : 115315
+// Moitree Chowdhury --- Matrikelnr : 115316
+
 package mmbuw.com.brokenproject;
 
 import android.app.Activity;
@@ -55,14 +58,14 @@ public class BrokenActivity extends Activity{
     public void brokenFunction(View v){
         //I was once, perhaps, possibly a functioning function
 
-        auntEdit.setText("Hello Yeasin From Button Click");
+        //auntEdit.setText("Hello Yeasin From Button Click");
 
-        Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Bug Fixed", Toast.LENGTH_LONG).show();
 
         //Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
 
-        /*
-        if (auntEdith.getText().toString().equals("Timmy")){
+
+        if (auntEdit.getText().toString().equals("Timmy")){
             System.out.println("Timmy fixed a bug!");
         }
 
@@ -70,6 +73,6 @@ public class BrokenActivity extends Activity{
         Intent intent = new Intent(this,AnotherBrokenActivity.class);
         String message = "This string will be passed to the new activity";
         startActivity(intent);
-        */
+
     }
 }
