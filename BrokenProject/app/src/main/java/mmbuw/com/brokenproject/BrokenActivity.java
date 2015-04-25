@@ -1,24 +1,37 @@
 package mmbuw.com.brokenproject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
+import android.view.View.OnClickListener;
 
 
-public class BrokenActivity extends Activity {
+public class BrokenActivity extends Activity{
+
+    static String EXTRA_MESSAGE = "Hello";
 
     private EditText auntEdith;
+    private EditText auntEdit;
+    private Button btnSentRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broken);
-        EditText auntEdit = (EditText)findViewById(R.id.edittext);
-    }
+        auntEdit = (EditText)findViewById(R.id.edittext);
+        btnSentRequest = (Button) findViewById(R.id.btnSentRequest);
 
+        auntEdit.setText("Hello From Germany");
+
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -39,8 +52,16 @@ public class BrokenActivity extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void brokenFunction(){
+    public void brokenFunction(View v){
         //I was once, perhaps, possibly a functioning function
+
+        auntEdit.setText("Hello Yeasin From Button Click");
+
+        Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
+
+        //Toast.makeText(this, "Clicked on Button", Toast.LENGTH_LONG).show();
+
+        /*
         if (auntEdith.getText().toString().equals("Timmy")){
             System.out.println("Timmy fixed a bug!");
         }
@@ -49,5 +70,6 @@ public class BrokenActivity extends Activity {
         Intent intent = new Intent(this,AnotherBrokenActivity.class);
         String message = "This string will be passed to the new activity";
         startActivity(intent);
+        */
     }
 }
